@@ -1,0 +1,46 @@
+.item-container {
+  text-align: center;
+}
+
+.car-form {
+  min-width: 150px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.common-info {
+  margin-bottom: 10px;
+}
+
+.back-link {
+  margin-bottom: 10px;
+}
+
+.buttons-container {
+  text-align: center;
+}
+
+form {
+  display: inline-block;
+}
+
+.remove-button-container {
+  text-align: right;
+  margin: 10px 0px;
+  display: inline-block;
+  width: 600px;
+}
+
+.map-container {
+  margin-bottom: 10px;
+
+  #map-item {
+    width: 600px;
+    height: 400px;
+    display: inline-block;
+  }
+}

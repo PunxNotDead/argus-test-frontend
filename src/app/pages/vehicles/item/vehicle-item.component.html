@@ -1,0 +1,46 @@
+<div class="item-container">
+  <div class="back-link">
+    <a [routerLink]="'../../list'">Back to list</a>
+  </div>
+
+  <div class="remove-button-container" *ngIf="!loading && vehicle.id">
+    <button mat-raised-button color="warn" (click)="delete()">Delete</button>
+  </div>
+
+  <div></div>
+
+  <form class="car-form" [formGroup]="vehicleForm" (ngSubmit)="save()">
+    <mat-card class="common-info">
+      <mat-card-content>
+        <div *ngIf="vehicle.id">ID: {{vehicle.id}}</div>
+        <div *ngIf="vehicle.id">Created: {{vehicle.created | date}}</div>
+        <div *ngIf="vehicle.id">Last Successful Connection: {{vehicle.lastSuccessfulConnection | date:'long'}}</div>
+        <div>Last geolocation point: {{vehicle.location.lat}}, {{vehicle.location.long}}</div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Vehicle Name</mat-label>
+      <input matInput placeholder="Vehicle Name" formControlName="name" [value]="vehicle.name">
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Car Type</mat-label>
+      <mat-select formControlName="type" [value]="vehicle.type">
+        <mat-option *ngFor="let type of types" [value]="type.value">
+          {{type.title}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <div class="map-container">
+    <div id="map-item"></div>
+  </div>
+
+  <div class="buttons-container">
+    <button mat-raised-button color="primary" [disabled]="!vehicleForm.valid" (click)="save()">Save</button>
+  </div>
+</div>
+
+

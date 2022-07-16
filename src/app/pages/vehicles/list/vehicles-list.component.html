@@ -1,0 +1,56 @@
+
+<div class="buttons-container">
+  <a mat-raised-button color="primary" [routerLink]="'../item/new'">Create</a>
+</div>
+
+<div *ngIf="loading">
+  Loading data...
+</div>
+
+<div *ngIf="!loading && data.length === 0">
+  <mat-card>
+    <mat-card-content>
+      No data
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<table mat-table [dataSource]="data" class="mat-elevation-z8" *ngIf="!loading && data.length > 0">
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="created">
+    <th mat-header-cell *matHeaderCellDef> Create </th>
+    <td mat-cell *matCellDef="let element"> {{element.created | date}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="lastSuccessfulConnection">
+    <th mat-header-cell *matHeaderCellDef> Last Successful connection </th>
+    <td mat-cell *matCellDef="let element"> {{element.lastSuccessfulConnection | date:'long'}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="rowClicked(row)"></tr>
+</table>
+
+<div class="map-container">
+  <div id="map"></div>
+</div>
+
+
